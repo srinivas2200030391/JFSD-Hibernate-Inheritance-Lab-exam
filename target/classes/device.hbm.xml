@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.klef.jfsd.exam">
+    <class name="com.klef.jfsd.exam.models.Device" table="Device">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="brand" column="brand" type="string"/>
+        <property name="model" column="model" type="string"/>
+        <property name="price" column="price" type="double"/>
+        <joined-subclass name="com.klef.jfsd.exam.models.SmartPhone" table="Smartphone">
+            <key column="device_id"/>
+            <property name="operatingSystem" column="operating_system" type="string"/>
+            <property name="cameraResolution" column="camera_resolution" type="int"/>
+        </joined-subclass>
+        <joined-subclass name="com.klef.jfsd.exam.models.Tablet" table="Tablet">
+            <key column="device_id"/>
+            <property name="screenSize" column="screen_size" type="double"/>
+            <property name="batteryLife" column="battery_life" type="int"/>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

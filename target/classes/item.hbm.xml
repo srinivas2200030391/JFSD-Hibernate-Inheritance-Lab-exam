@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.klef.jfsd.models.Item">
+        <id name="itemId"/>
+        <discriminator column="clstype" />
+        <property name="title"/>
+
+        <subclass name="com.klef.jfsd.models.Book" discriminator-value="book">
+            <property name="author"/>
+            <property name="isbn"/>
+        </subclass>
+        <subclass name="com.klef.jfsd.models.DVD" discriminator-value="dvd">
+            <property name="director"/>
+            <property name="regionCode"/>
+        </subclass>
+    </class>
+
+</hibernate-mapping>
+
